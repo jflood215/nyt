@@ -3,7 +3,6 @@ import NytResults from "./NytResults";
 import { Button, Col, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import Pic from "../assets/newyorktimes2.png"
 const baseURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-const key = "UAG34u4cORMFXG1GMFUA1lsUR2qwi7rn";
 
 const NytApp = () => {
   const [search, setSearch] = useState("");
@@ -12,7 +11,8 @@ const NytApp = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const [results, setResults] = useState([]);
   const fetchResults = () => {
-    let url = `${baseURL}?api-key=${key}&page=${pageNumber}&q=${search}`;
+      
+    let url = `${baseURL}?api-key=${process.env.REACT_APP_API_KEY}&page=${pageNumber}&q=${search}`;
     url = startDate ? url + `&begin_date=${startDate}` : url;
     url = endDate ? url + `&end_date=${endDate}` : url;
 
