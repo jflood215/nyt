@@ -11,10 +11,12 @@ const NytApp = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const [results, setResults] = useState([]);
   const fetchResults = () => {
-      
+
     let url = `${baseURL}?api-key=${process.env.REACT_APP_API_KEY}&page=${pageNumber}&q=${search}`;
     url = startDate ? url + `&begin_date=${startDate}` : url;
     url = endDate ? url + `&end_date=${endDate}` : url;
+
+    console.log(process.env);
 
     fetch(url)
       .then((res) => res.json())
