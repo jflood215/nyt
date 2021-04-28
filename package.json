@@ -2,7 +2,6 @@
   "name": "nyt-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nyt-react-api.web.app",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootstrap": "4.3.1",
