@@ -22,6 +22,9 @@ const NytApp = () => {
       .catch((err) => console.log(err));
   };
 
+  const startAtTop = window.onload = () => window.scrollTo(0,0)
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     fetchResults();
@@ -33,12 +36,14 @@ const NytApp = () => {
       if (pageNumber > 0) {
         setPageNumber(pageNumber + 1);
         fetchResults();
+        startAtTop();
       }
     }
 
     if (direction === "up") {
       setPageNumber(pageNumber + 1);
       fetchResults();
+      startAtTop();
     }
   };
 
