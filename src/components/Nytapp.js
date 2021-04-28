@@ -16,8 +16,6 @@ const NytApp = () => {
     url = startDate ? url + `&begin_date=${startDate}` : url;
     url = endDate ? url + `&end_date=${endDate}` : url;
 
-    console.log(process.env);
-
     fetch(url)
       .then((res) => res.json())
       .then((data) => setResults(data.response.docs))
