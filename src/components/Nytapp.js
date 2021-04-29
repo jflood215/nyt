@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NytResults from "./NytResults";
 import { Button, Col, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import Pic from "../assets/newyorktimes2.png"
+
 const baseURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
 const NytApp = () => {
@@ -10,6 +11,7 @@ const NytApp = () => {
   const [endDate, setEndDate] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [results, setResults] = useState([]);
+  
   const fetchResults = () => {
 
     let url = `${baseURL}?api-key=${process.env.REACT_APP_API_KEY}&page=${pageNumber}&q=${search}`;
@@ -22,7 +24,7 @@ const NytApp = () => {
       .catch((err) => console.log(err));
   };
 
-  const startAtTop = window.onload = () => window.scrollTo(0,0)
+  window.onload = () => window.scrollTo(0,0)
 
 
   const handleSubmit = (event) => {
@@ -36,14 +38,14 @@ const NytApp = () => {
       if (pageNumber > 0) {
         setPageNumber(pageNumber + 1);
         fetchResults();
-        startAtTop();
+        window.onload();
       }
     }
 
     if (direction === "up") {
       setPageNumber(pageNumber + 1);
       fetchResults();
-      startAtTop();
+      window.onload();
     }
   };
 
