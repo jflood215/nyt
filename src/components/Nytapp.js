@@ -29,6 +29,7 @@ const NytApp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setPageNumber(0);
     fetchResults();
   };
 
@@ -36,7 +37,7 @@ const NytApp = () => {
     event.preventDefault();
     if (direction === "down") {
       if (pageNumber > 0) {
-        setPageNumber(pageNumber + 1);
+        setPageNumber(pageNumber - 1);
         fetchResults();
         window.onload();
       }

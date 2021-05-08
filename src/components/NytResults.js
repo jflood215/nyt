@@ -14,8 +14,11 @@ const NytResults = (props) => {
                </CardBody>
               {result.multimedia.length > 1 ? (
                 <img
+                  height="90%"
+                  width="90%"
+                  style={{margin: 'auto'}}
                   alt="article"
-                  src={`http://www.nytimes.com/${result.multimedia[0].url}`}
+                  src={`http://www.nytimes.com/${result.multimedia[1].url}`}
                 />
               ) : (
                 ""
