@@ -1,3 +1,9 @@
+## New York Times API - utilizing React
+
+This application utilizes one of the New York Times APIs, to display stories from the NYT based on search input and an optional date span. Users can search any topic or keywords they'd like, and the app will return 10 of the most recent news stories if no dates are entered. If a date span is entered, the API will return stories that correspond to that date range. 
+
+<hr />
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
