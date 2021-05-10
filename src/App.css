@@ -30,7 +30,8 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  body {
-    width: 100%;
+  .card,
+  .form {
+    width: 90%;
   }
 }

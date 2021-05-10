@@ -8,7 +8,7 @@ const NytResults = (props) => {
         {props.results.map((result) => {
           return (
             <div key={result._id}>
-              <Card class="card">
+              <Card className="card">
               <CardBody>
                <CardTitle tag="h3">{result.headline.main}</CardTitle>
                </CardBody>
@@ -21,7 +21,13 @@ const NytResults = (props) => {
                   src={`http://www.nytimes.com/${result.multimedia[1].url}`}
                 />
               ) : (
-                ""
+                <img
+                height="90%"
+                width="90%"
+                style={{margin: 'auto'}}
+                alt="article"
+                src="https://imgur.com/Yh784b0.png"
+                />
               )}
              <CardBody>
               <CardText>{result.snippet}</CardText>
@@ -33,14 +39,6 @@ const NytResults = (props) => {
             </div>
           );
         })}
-        <div>
-          <Button className="button-previous" outline color="dark" onClick={(e) => props.changePageNumber(e, "down")}>
-            Previous 10
-          </Button>
-          <Button className="button-next" outline color="dark" onClick={(e) => props.changePageNumber(e, "up")}>
-            Next 10
-          </Button>
-        </div>
       </div>
     </div>
   );

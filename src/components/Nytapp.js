@@ -9,45 +9,24 @@ const NytApp = () => {
   const [search, setSearch] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [pageNumber, setPageNumber] = useState(0);
+  // const [pageNumber, setPageNumber] = useState(0);
   const [results, setResults] = useState([]);
   
-  const fetchResults = () => {
+  async function fetchResults(){
 
-    let url = `${baseURL}?api-key=${process.env.REACT_APP_API_KEY}&page=${pageNumber}&q=${search}`;
+    let url = `${baseURL}?api-key=${process.env.REACT_APP_API_KEY}&page=0&q=${search}`;
     url = startDate ? url + `&begin_date=${startDate}` : url;
     url = endDate ? url + `&end_date=${endDate}` : url;
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setResults(data.response.docs))
+    const response = await fetch(url);
+      const data = await response.json().then((data) => setResults(data.response.docs))
       .catch((err) => console.log(err));
-  };
-
-  window.onload = () => window.scrollTo(0,0)
-
+      return data;
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setPageNumber(0);
     fetchResults();
-  };
-
-  const changePageNumber = (event, direction) => {
-    event.preventDefault();
-    if (direction === "down") {
-      if (pageNumber > 0) {
-        setPageNumber(pageNumber - 1);
-        fetchResults();
-        window.onload();
-      }
-    }
-
-    if (direction === "up") {
-      setPageNumber(pageNumber + 1);
-      fetchResults();
-      window.onload();
-    }
   };
 
   return (
@@ -93,7 +72,7 @@ const NytApp = () => {
         </FormGroup>
         </Form>
         {results.length > 0 ? (
-          <NytResults results={results} changePageNumber={changePageNumber} />
+          <NytResults results={results}/>
         ) : null}
       </div>
     </div>
